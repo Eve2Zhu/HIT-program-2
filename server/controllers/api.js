@@ -9,8 +9,8 @@ const xfApiKey = "17319b09879a73a79b7e7bc3c9e95c05";
 module.exports = {
   /** 语音合成 - 腾讯 */
   async ttsXF(ctx) {
-    let formData = decodeURI(ctx.request.querystring)
-    console.log(formData)
+    let formData = decodeURI(ctx.request.querystring);
+    console.log(formData);
     var jsonOri = {
       auf: "audio/L16;rate=16000",
       aue: "raw",
@@ -19,12 +19,10 @@ module.exports = {
       volume: "50",
       pitch: "50",
       engine_type: "intp65",
-      text_type: "text"
+      text_type: "text",
     };
     var param = Buffer.from(JSON.stringify(jsonOri)).toString("base64");
-    var curTime = Date.parse(new Date())
-      .toString()
-      .slice(0, -3);
+    var curTime = Date.parse(new Date()).toString().slice(0, -3);
     var checkSum = crypto
       .createHash("md5")
       .update(xfApiKey + curTime + param)
@@ -38,38 +36,37 @@ module.exports = {
         "X-Param": param,
         "X-Appid": xfAppid,
         "X-CurTime": curTime,
-        "X-CheckSum": checkSum
+        "X-CheckSum": checkSum,
       },
       form: formData,
       resolveWithFullResponse: true,
-      encoding: null
+      encoding: null,
     };
 
-    await request(options)
-      .then(response => {
-        if (response.statusCode == 200) {
-          let headers = response.headers;
-          if (headers["content-type"] == "audio/mpeg") {
-            fs.writeFile(`${headers.sid}.wav`, response.body, function(err) {
-              if (err) return console.error(err);
-            });
-            ctx.body = {
-              status: 'ok',
-              message: '合成成功!',
-              sid: headers.sid
-            }
-          } else {
-            ctx.body = {
-              status: 'fail',
-              message: response.body
-            }
-          }
+    await request(options).then((response) => {
+      if (response.statusCode == 200) {
+        let headers = response.headers;
+        if (headers["content-type"] == "audio/mpeg") {
+          fs.writeFile(`${headers.sid}.wav`, response.body, function (err) {
+            if (err) return console.error(err);
+          });
+          ctx.body = {
+            status: "ok",
+            message: "合成成功!",
+            sid: headers.sid,
+          };
         } else {
           ctx.body = {
-            status: 'fail',
-            message: '第三方接口调用失败!'
-          }
+            status: "fail",
+            message: response.body,
+          };
         }
-      })
-  }
+      } else {
+        ctx.body = {
+          status: "fail",
+          message: "第三方接口调用失败!",
+        };
+      }
+    });
+  },
 };

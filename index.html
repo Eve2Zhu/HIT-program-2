@@ -1,119 +1,120 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>儿童编程</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/common.css" rel="stylesheet" />
+    <link href="css/reset.css" rel="stylesheet" />
+    <!-- <link href="css/index.css" rel="stylesheet" /> -->
+    <script src="js/lib/jquery.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <title>儿童编程</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/common.css" rel="stylesheet" />
-  <link href="css/reset.css" rel="stylesheet" />
-  <!-- <link href="css/index.css" rel="stylesheet" /> -->
-  <script src="js/lib/jquery.min.js"></script>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+      html,
+      body,
+      .intro {
+        height: 100%;
+        overflow: hidden;
+      }
 
-    html,
-    body,
-    .intro {
-      height: 100%;
-      overflow: hidden;
-    }
+      .head {
+        text-align: center;
+        height: 240px;
+        line-height: 240px;
+      }
 
-    .head {
-      text-align: center;
-      height: 240px;
-      line-height: 240px;
-    }
+      .head h1 {
+        font-size: 56px;
+      }
 
-    .head h1 {
-      font-size: 56px;
-    }
+      .intro {
+        width: 100%;
+        background-image: url("./img/new/bg_01.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
 
-    .intro {
-      width: 100%;
-      background-image: url('./img/new/bg_01.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-    }
+      .menu {
+        width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+      }
 
-    .menu {
-      width: 80%;
-      margin: 0 auto;
-      overflow: hidden;
-    }
+      .menu-item {
+        float: left;
+        width: 20%;
+        text-align: center;
+        padding: 30px;
+        transition: all 0.3s;
+      }
 
-    .menu-item {
-      float: left;
-      width: 20%;
-      text-align: center;
-      padding: 30px;
-      transition: all .3s;
-    }
+      .menu-item:hover {
+        transform: scale(1.2);
+      }
 
-    .menu-item:hover {
-      transform: scale(1.2);
-    }
+      .menu-item .name {
+        padding-top: 10px;
+      }
+    </style>
+  </head>
 
-    .menu-item .name {
-      padding-top: 10px;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="intro">
-    <div class="head">
-      <h1>人工智能游戏</h1>
-    </div>
-    <ul class="menu">
-      <!-- <li class="menu-item">
+  <body>
+    <div class="intro">
+      <div class="head">
+        <h1>人工智能游戏</h1>
+      </div>
+      <ul class="menu">
+        <!-- <li class="menu-item">
         <a href="game.html?name=tank" target="_blank">
           <img src="./img/new/icon03.png" alt="">
           <div class="name">雄黄酒</div>
         </a>
       </li> -->
-      <li class="menu-item">
-        <a href="game.html?name=maze" target="_blank">
-          <img src="./img/new/icon02.png" alt="">
-          <div class="name">赛龙舟</div>
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="festival-tips.html" target="_blank">
-          <img src="./img/new/icon01.png" alt="">
-          <div class="name">诗词朗诵</div>
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="http://0.0.0.0:8000/flower" target="_blank">
-          <img src="./img/new/icon_05.png" width="86" alt="">
-          <div class="name">花卉分类</div>
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="http://0.0.0.0:8000/" target="_blank">
-          <img src="./img/new/icon04.png" alt="">
-          <div class="name">手写数字识别</div>
-        </a>
-      </li>
-      <!-- <li class="menu-item">
+        <li class="menu-item">
+          <a href="game.html?name=maze" target="_blank">
+            <img src="./img/new/icon02.png" alt="" />
+            <div class="name">赛龙舟</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="festival-tips.html" target="_blank">
+            <img src="./img/new/icon01.png" alt="" />
+            <div class="name">诗词朗诵</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="http://0.0.0.0:8000/flower" target="_blank">
+            <img src="./img/new/icon_05.png" width="86" alt="" />
+            <div class="name">花卉分类</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="http://0.0.0.0:8000/" target="_blank">
+            <img src="./img/new/icon04.png" alt="" />
+            <div class="name">手写数字识别</div>
+          </a>
+        </li>
+        <!-- <li class="menu-item">
         <a href="http://localhost:9000/HIT-program-1/netscope/#/preset/CNNinvisual" target="_blank">
           <img src="./img/new/icon04.png" alt="">
           <div class="name">可视化CNN</div>
         </a>
       </li> -->
-      <li class="menu-item">
-        <a href="http://localhost:9000/HIT-program-1/netscope/#/preset/CNNinvisual" target="_blank">
-          <img src="./img/new/icon04.png" alt="">
-          <div class="name">强化学习游戏</div>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <script src="js/page.js" async="true"></script>
-</body>
-
+        <li class="menu-item">
+          <a
+            href="http://localhost:9000/HIT-program-1/netscope/#/preset/CNNinvisual"
+            target="_blank"
+          >
+            <img src="./img/new/icon04.png" alt="" />
+            <div class="name">强化学习游戏</div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <script src="js/page.js" async="true"></script>
+  </body>
 </html>
